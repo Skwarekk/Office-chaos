@@ -4,7 +4,6 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float speed = 7f;
 
-
     private void Update()
     {
         float movementValue = GameInput.Instance.GetMovementValue();
