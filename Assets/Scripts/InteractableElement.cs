@@ -1,31 +1,22 @@
 using UnityEngine;
 
-public class InteractableElement : MonoBehaviour
+public abstract class InteractableElement : MonoBehaviour
 {
-    [SerializeField] private Transform selectedVisual;
+    [SerializeField] private bool canOnlyUseOnce = false;
+    private bool hasBeenUsed = false;
 
     public virtual void Interact()
     {
-
-    }
-
-    private void Awake()
-    {
-        selectedVisual.gameObject.SetActive(false);
-    }
-
-    private void OnMouseEnter()
-    {
-        selectedVisual.gameObject.SetActive(true);
-    }
-
-    private void OnMouseExit()
-    {
-        selectedVisual.gameObject.SetActive(false);
     }
 
     private void OnMouseDown()
     {
+        if (canOnlyUseOnce && hasBeenUsed)
+        {
+            return;
+        }
+
         Interact();
+        hasBeenUsed = true;
     }
 }
