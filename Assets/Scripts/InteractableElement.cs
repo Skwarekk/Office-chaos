@@ -2,21 +2,33 @@ using UnityEngine;
 
 public abstract class InteractableElement : MonoBehaviour
 {
-    [SerializeField] private bool canOnlyUseOnce = false;
-    private bool hasBeenUsed = false;
+    [SerializeField] private string[] textLines;
+
+    private bool canInteract = true;
 
     public virtual void Interact()
     {
     }
 
+    public virtual void CannotInteract()
+    {
+        
+    }
+
     private void OnMouseDown()
     {
-        if (canOnlyUseOnce && hasBeenUsed)
+        if (canInteract)
         {
-            return;
+            Interact();
         }
+        else
+        {
+            CannotInteract();
+        }
+    }
 
-        Interact();
-        hasBeenUsed = true;
+    public void ToggleCanInteract()
+    {
+        canInteract = !canInteract;
     }
 }
