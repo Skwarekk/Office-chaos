@@ -20,12 +20,14 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Enable();
     }
 
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            OnNextDialogue?.Invoke(this, EventArgs.Empty);
-        }
+        playerInputActions.Player.SkipDialogue.performed += SkipDialogue_performed;
+    }
+
+    private void SkipDialogue_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        OnNextDialogue?.Invoke(this, EventArgs.Empty);
     }
 
     public float GetMovementValue()

@@ -20,14 +20,20 @@ public class DialogueWindowUi : MonoBehaviour
 
     private void Instance_OnNewDialogueLine(object sender, DialogueManager.OnNewDialogueLineEventArgs e)
     {
-        Show();
-        dialogueText.text = string.Empty;
-        ShowDialogueLine(e.line);
+        if (!isTyping)
+        {
+            Show();
+            dialogueText.text = string.Empty;
+            ShowDialogueLine(e.line);
+        }
     }
-
+ 
     private void Instance_OnDialogueEnded(object sender, System.EventArgs e)
     {
-        Hide();
+        if (!isTyping)
+        {
+            Hide();
+        }
     }
 
     private void Show()
