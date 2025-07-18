@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class CoffeeMachine : InteractableElement
+public class Fan : InteractableElement
 {
     public event EventHandler OnStateChanged;
 
@@ -9,12 +9,12 @@ public class CoffeeMachine : InteractableElement
     {
         Normal,
         InUse,
-        Broken
+        Used
     }
 
-    [SerializeField] private string[] coffeOnTheFloorLines;
+    [SerializeField] private string[] tornadoLines;
     [Space]
-    [SerializeField] private float timeToBrew = 1.5f;
+    [SerializeField] private float usingTime = 2f;
     private float timer;
 
     private State state;
@@ -37,18 +37,18 @@ public class CoffeeMachine : InteractableElement
         {
             timer += Time.deltaTime;
 
-            if (timer > timeToBrew)
+            if (timer > usingTime)
             {
-                state = State.Broken;
+                state = State.Used;
                 ToggleIsInUse();
                 OnStateChanged?.Invoke(this, EventArgs.Empty);
                 ToggleCanInteract();
-                DialogueManager.Instance.ShowDialogue(coffeOnTheFloorLines);
+                DialogueManager.Instance.ShowDialogue(tornadoLines);
             }
         }
     }
 
-    // Methods to check the state of the coffee machine
+    // Methods to check the state of the fan
 
     public bool IsNormal()
     {
@@ -60,8 +60,8 @@ public class CoffeeMachine : InteractableElement
         return state == State.InUse;
     }
 
-    public bool IsBroken()
+    public bool IsTornado()
     {
-        return state == State.Broken;
+        return state == State.Used;
     }
 }
