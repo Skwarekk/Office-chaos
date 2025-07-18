@@ -3,13 +3,6 @@ using UnityEngine;
 
 public class CoffeeMachine : InteractableElement
 {
-    [Serializable]
-    public struct CoffeeMachineDialogue
-    {
-        public string[] coffeOnTheFloorLines;
-        public string[] coffeeMachineBrokenLines;
-    }
-
     public event EventHandler OnStateChanged;
 
     private enum State
@@ -19,7 +12,7 @@ public class CoffeeMachine : InteractableElement
         Broken
     }
 
-    [SerializeField] private CoffeeMachineDialogue dialogue;
+    [SerializeField] private string[] coffeOnTheFloorLines;
     [Space]
     [SerializeField] private float timeToBrew = 1.5f;
     private float timer;
@@ -29,12 +22,8 @@ public class CoffeeMachine : InteractableElement
     public override void Interact()
     {
         state = State.InUse;
+        ToggleIsInUse();
         OnStateChanged?.Invoke(this, EventArgs.Empty);
-    }
-
-    public override void CannotInteract()
-    {
-        DialogueSystem.ShowDialogue(dialogue.coffeeMachineBrokenLines);
     }
 
     private void Start()
@@ -51,9 +40,10 @@ public class CoffeeMachine : InteractableElement
             if (timer > timeToBrew)
             {
                 state = State.Broken;
+                ToggleIsInUse();
                 OnStateChanged?.Invoke(this, EventArgs.Empty);
                 ToggleCanInteract();
-                DialogueSystem.ShowDialogue(dialogue.coffeOnTheFloorLines);
+                DialogueSystem.ShowDialogue(coffeOnTheFloorLines);
             }
         }
     }

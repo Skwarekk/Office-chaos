@@ -6,17 +6,11 @@ public abstract class InteractableElement : MonoBehaviour
     public event EventHandler OnHover;
     public event EventHandler OnUnhover;
 
-    [SerializeField] private string[] textLines;
-
     private bool canInteract = true;
+    private bool isInUse = false;
 
     public virtual void Interact()
     {
-    }
-
-    public virtual void CannotInteract()
-    {
-        
     }
 
     private void OnMouseDown()
@@ -25,10 +19,6 @@ public abstract class InteractableElement : MonoBehaviour
         {
             Interact();
         }
-        else
-        {
-            CannotInteract();
-        }
     }
 
     public void ToggleCanInteract()
@@ -36,13 +26,25 @@ public abstract class InteractableElement : MonoBehaviour
         canInteract = !canInteract;
     }
 
+    public void ToggleIsInUse()
+    {
+        isInUse = !isInUse;
+        OnUnhover?.Invoke(this, EventArgs.Empty);
+    }
+
     private void OnMouseEnter()
     {
-        OnHover?.Invoke(this, EventArgs.Empty);
+        if (!isInUse && canInteract)
+        {
+            OnHover?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     private void OnMouseExit()
     {
-        OnUnhover?.Invoke(this, EventArgs.Empty);
+        if (!isInUse && canInteract)
+        {
+            OnUnhover?.Invoke(this, EventArgs.Empty);
+        }
     }
 }
