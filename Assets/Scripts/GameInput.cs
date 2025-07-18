@@ -32,4 +32,14 @@ public class GameInput : MonoBehaviour
     {
         return playerInputActions.Player.Move.ReadValue<float>();
     }
+
+    public void DisableMovement()
+    {
+        playerInputActions.Player.Move.Disable();
+    }
+
+    public void EnableMovement()
+    {
+        playerInputActions.Player.Move.Enable();
+    }
 }

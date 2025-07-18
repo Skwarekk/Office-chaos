@@ -38,6 +38,7 @@ public class DialogueManager: MonoBehaviour
 
     public void ShowDialogue(string[] textLines)
     {
+        GameInput.Instance.DisableMovement();
         foreach (var line in textLines)
         {
             dialogueLines.Enqueue(line);
@@ -57,6 +58,7 @@ public class DialogueManager: MonoBehaviour
         {
             OnDialogueEnded?.Invoke(this, EventArgs.Empty);
             dialogueLines.Clear();
+            GameInput.Instance.EnableMovement();
         }
     }
 }
