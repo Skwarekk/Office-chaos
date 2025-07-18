@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class GameInput : MonoBehaviour
 {
+    public event EventHandler OnNextDialogue;
+
     public static GameInput Instance { get; private set; }
     private PlayerInputActions playerInputActions;
 
@@ -15,6 +18,14 @@ public class GameInput : MonoBehaviour
 
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            OnNextDialogue?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     public float GetMovementValue()

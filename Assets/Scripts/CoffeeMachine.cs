@@ -43,7 +43,7 @@ public class CoffeeMachine : InteractableElement
                 ToggleIsInUse();
                 OnStateChanged?.Invoke(this, EventArgs.Empty);
                 ToggleCanInteract();
-                DialogueSystem.ShowDialogue(coffeOnTheFloorLines);
+                DialogueManager.Instance.ShowDialogue(coffeOnTheFloorLines);
             }
         }
     }
