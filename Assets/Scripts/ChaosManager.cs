@@ -21,7 +21,7 @@ public class ChaosManager : MonoBehaviour
     public void IncreaseChaosLevel(int value)
     {
         chaosLevel += value;
-        DialogueManager.Instance.ShowDialogue(new string[] {$"Chaos level increased to {chaosLevel}!"});
+        DialogueManager.Instance.ShowDialogue(new string[] {$"CHAOS LEVEL INCREASED TO {chaosLevel}!"});
         OnChaosLevelChanged?.Invoke(this, EventArgs.Empty);
     }
 

@@ -357,8 +357,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c3ee54f5113094cb28af0383ac6094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chaosAmount: 0
   tornadoLines:
-  - Accidentaly it turned out into tornado :(
+  - YOU'VE TURNED ON A FAN.
+  - UNFORTUNATELY, THE PLEASANT BREEZE HAVE TURNED INTO A TORNADO!
   usingTime: 1.5
   tornadoPrefab: {fileID: 8242330913719525963, guid: 95a3ec7b912ff2e4bbf8f527d01b40bd, type: 3}
   tornadoStarterPoint: {fileID: 8782271909722541217}

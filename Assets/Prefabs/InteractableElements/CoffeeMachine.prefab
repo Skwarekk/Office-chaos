@@ -339,10 +339,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7785dd66607e2264f93f9cdc123d9ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textLines: []
-  dialogue:
-    coffeOnTheFloorLines: []
-    coffeeMachineBrokenLines: []
+  chaosAmount: 0
+  coffeOnTheFloorLines:
+  - YOU'VE MADE A COFFEE!
+  - ON THE FLOOR!
   timeToBrew: 1.5
 --- !u!4 &186450957398863889 stripped
 Transform:
