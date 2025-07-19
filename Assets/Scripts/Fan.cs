@@ -15,6 +15,9 @@ public class Fan : InteractableElement
     [SerializeField] private string[] tornadoLines;
     [Space]
     [SerializeField] private float usingTime = 2f;
+    [Header("Tornado")]
+    [SerializeField] private Transform tornadoPrefab;
+    [SerializeField] private Transform tornadoStarterPoint;
     private float timer;
 
     private State state;
@@ -44,6 +47,7 @@ public class Fan : InteractableElement
                 OnStateChanged?.Invoke(this, EventArgs.Empty);
                 ToggleCanInteract();
                 DialogueManager.Instance.ShowDialogue(tornadoLines);
+                Instantiate(tornadoPrefab, tornadoStarterPoint);
             }
         }
     }

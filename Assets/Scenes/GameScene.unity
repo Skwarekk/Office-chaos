@@ -450,7 +450,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -11}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1007,7 +1007,7 @@ Transform:
   m_GameObject: {fileID: 1711250755}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.9, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1179,7 +1179,7 @@ Transform:
   m_GameObject: {fileID: 2054897946}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -11}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1203,7 +1203,7 @@ MonoBehaviour:
     AngularDampingMode: 0
     RotationDamping: {x: 0, y: 0, z: 0}
     QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 1.9, z: -10}
+  FollowOffset: {x: 0, y: 0, z: -10}
 --- !u!1001 &2086730057
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1280,6 +1280,10 @@ PrefabInstance:
       propertyPath: normalSprite
       value: 
       objectReference: {fileID: 6147777685625707044, guid: 7a1618a883fd1ff4eb4e80838c6c2a03, type: 3}
+    - target: {fileID: 8782271909722541217, guid: 4d72b94ac8de1294d82cbdca93ac3163, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.18
+      objectReference: {fileID: 0}
     - target: {fileID: 8802101669414200464, guid: 4d72b94ac8de1294d82cbdca93ac3163, type: 3}
       propertyPath: tornadoLines.Array.size
       value: 2
@@ -1328,7 +1332,7 @@ Transform:
   m_GameObject: {fileID: 2144217652}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.9, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
