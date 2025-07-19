@@ -47,6 +47,7 @@ public class Fan : InteractableElement
                 OnStateChanged?.Invoke(this, EventArgs.Empty);
                 ToggleCanInteract();
                 DialogueManager.Instance.ShowDialogue(tornadoLines);
+                ChaosManager.Instance.IncreaseChaosLevel(GetChaosAmount());
                 Instantiate(tornadoPrefab, tornadoStarterPoint);
             }
         }

@@ -14,6 +14,8 @@ public class DialogueManager: MonoBehaviour
 
     public static DialogueManager Instance { get; private set; }
     private Queue<string> dialogueLines;
+    private bool isDialogueActive = false;
+    private bool isTyping = false;
 
     private void Awake()
     {
@@ -33,22 +35,29 @@ public class DialogueManager: MonoBehaviour
 
     private void Instance_OnNextDialogue(object sender, EventArgs e)
     {
-        NextDialogue();
+        if (!isTyping)
+        {
+            NextDialogue();
+        }
     }
 
     public void ShowDialogue(string[] textLines)
     {
-        GameInput.Instance.DisableMovement();
         foreach (var line in textLines)
         {
             dialogueLines.Enqueue(line);
         }
 
-        NextDialogue();
+        if (!isDialogueActive)
+        {
+            NextDialogue();
+        }
     }
 
     private void NextDialogue()
     {
+        GameInput.Instance.DisableMovement();
+        isDialogueActive = true;
         if (dialogueLines.Count > 0)
         {
             string line = dialogueLines.Dequeue();
@@ -57,8 +66,14 @@ public class DialogueManager: MonoBehaviour
         else
         {
             OnDialogueEnded?.Invoke(this, EventArgs.Empty);
-            dialogueLines.Clear();
             GameInput.Instance.EnableMovement();
+            dialogueLines.Clear();
+            isDialogueActive = false;
         }
+    }
+
+    public void ToggleIsTyping()
+    {
+        isTyping = !isTyping;
     }
 }

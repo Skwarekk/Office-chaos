@@ -6,6 +6,8 @@ public abstract class InteractableElement : MonoBehaviour
     public event EventHandler OnHover;
     public event EventHandler OnUnhover;
 
+    [SerializeField] private int chaosAmount;
+
     private bool canInteract = true;
     private bool isInUse = false;
 
@@ -30,6 +32,11 @@ public abstract class InteractableElement : MonoBehaviour
     {
         isInUse = !isInUse;
         OnUnhover?.Invoke(this, EventArgs.Empty);
+    }
+
+    public int GetChaosAmount()
+    {
+        return chaosAmount;
     }
 
     private void OnMouseEnter()

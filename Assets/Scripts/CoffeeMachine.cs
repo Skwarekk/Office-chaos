@@ -44,6 +44,7 @@ public class CoffeeMachine : InteractableElement
                 OnStateChanged?.Invoke(this, EventArgs.Empty);
                 ToggleCanInteract();
                 DialogueManager.Instance.ShowDialogue(coffeOnTheFloorLines);
+                ChaosManager.Instance.IncreaseChaosLevel(GetChaosAmount());
             }
         }
     }

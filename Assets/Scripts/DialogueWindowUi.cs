@@ -27,7 +27,7 @@ public class DialogueWindowUi : MonoBehaviour
             ShowDialogueLine(e.line);
         }
     }
- 
+
     private void Instance_OnDialogueEnded(object sender, System.EventArgs e)
     {
         if (!isTyping)
@@ -51,6 +51,7 @@ public class DialogueWindowUi : MonoBehaviour
         currentLine = line;
         isTyping = true;
         currentLineIndex = 0;
+        DialogueManager.Instance.ToggleIsTyping();
     }
 
     private void Update()
@@ -69,6 +70,7 @@ public class DialogueWindowUi : MonoBehaviour
                 else
                 {
                     isTyping = false;
+                    DialogueManager.Instance.ToggleIsTyping();
                 }
             }
         }
