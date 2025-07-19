@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class DialogueWindowUi : MonoBehaviour
+public class DialogueWindowUI: MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private float letterDelay = 0.1f;

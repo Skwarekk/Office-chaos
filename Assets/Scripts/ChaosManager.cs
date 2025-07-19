@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 
 public class ChaosManager : MonoBehaviour
 {
+    public event EventHandler OnChaosLevelChanged;
+
     public static ChaosManager Instance { get; private set; }
 
-    [SerializeField][Range(min: 0, max: 100)] private float chaosLevel;
+    [SerializeField][Range(min: 0, max: 100)] private int chaosLevel;
 
     private void Awake()
     {
@@ -19,5 +22,11 @@ public class ChaosManager : MonoBehaviour
     {
         chaosLevel += value;
         DialogueManager.Instance.ShowDialogue(new string[] {$"Chaos level increased to {chaosLevel}!"});
+        OnChaosLevelChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public int GetChaosLevel()
+    {
+        return chaosLevel;
     }
 }
