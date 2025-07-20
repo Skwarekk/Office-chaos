@@ -13,6 +13,9 @@ public class DialogueManager: MonoBehaviour
     public event EventHandler OnDialogueEnded;
 
     public static DialogueManager Instance { get; private set; }
+
+    [SerializeField] private string[] startDialogueLines;
+
     private Queue<string> dialogueLines;
     private bool isDialogueActive = false;
     private bool isTyping = false;
@@ -29,8 +32,9 @@ public class DialogueManager: MonoBehaviour
     private void Start()
     {
         dialogueLines = new Queue<string>();
-
         GameInput.Instance.OnNextDialogue += Instance_OnNextDialogue;
+
+        ShowDialogue(startDialogueLines);
     }
 
     private void Instance_OnNextDialogue(object sender, EventArgs e)
@@ -75,5 +79,10 @@ public class DialogueManager: MonoBehaviour
     public void ToggleIsTyping()
     {
         isTyping = !isTyping;
+    }
+
+    public bool IsDialogueActive()
+    {
+        return isDialogueActive;
     }
 }

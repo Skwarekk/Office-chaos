@@ -19,3 +19,4 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 7aebae7c98d3d294089c65e0bde622ea, type: 3}
   fanSound: {fileID: 8300000, guid: 1c6097ad4c5e67941acbc3b6820bcd93, type: 3}
   dialogueSound: {fileID: 8300000, guid: 13a8f12aa5608164a94da48e3ef9b462, type: 3}
+  chaosLevelIncreaseSound: {fileID: 8300000, guid: 6f4978f21177ba948988e7db2bdf8122, type: 3}

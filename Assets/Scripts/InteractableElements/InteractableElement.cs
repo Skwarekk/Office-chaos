@@ -17,7 +17,7 @@ public abstract class InteractableElement : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (canInteract)
+        if (canInteract && !DialogueManager.Instance.IsDialogueActive())
         {
             Interact();
             float volume = 0.5f;
@@ -44,7 +44,7 @@ public abstract class InteractableElement : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (!isInUse && canInteract)
+        if (!isInUse && canInteract && !DialogueManager.Instance.IsDialogueActive())
         {
             OnHover?.Invoke(this, EventArgs.Empty);
         }
@@ -52,7 +52,7 @@ public abstract class InteractableElement : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (!isInUse && canInteract)
+        if (!isInUse && canInteract && !DialogueManager.Instance.IsDialogueActive())
         {
             OnUnhover?.Invoke(this, EventArgs.Empty);
         }
