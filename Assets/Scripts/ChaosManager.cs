@@ -4,10 +4,14 @@ using UnityEngine;
 public class ChaosManager : MonoBehaviour
 {
     public event EventHandler OnChaosLevelChanged;
+    public event EventHandler OnChaosLevelMaxed;
 
     public static ChaosManager Instance { get; private set; }
 
-    [SerializeField][Range(min: 0, max: 100)] private int chaosLevel;
+    [SerializeField] private string[] maxChaosLevelLines;
+
+    private int chaosLevel;
+    private int maxChaosLevel = 100;
 
     private void Awake()
     {
@@ -21,8 +25,14 @@ public class ChaosManager : MonoBehaviour
     public void IncreaseChaosLevel(int value)
     {
         chaosLevel += value;
-        DialogueManager.Instance.ShowDialogue(new string[] {$"CHAOS LEVEL INCREASED TO {chaosLevel}!"});
+        DialogueManager.Instance.ShowDialogue(new string[] {$"CHAOS LEVEL HAVE INCREASED TO {chaosLevel}!"});
         OnChaosLevelChanged?.Invoke(this, EventArgs.Empty);
+
+        if(chaosLevel >= maxChaosLevel)
+        {
+            DialogueManager.Instance.ShowDialogue(maxChaosLevelLines);
+            OnChaosLevelMaxed?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     public int GetChaosLevel()

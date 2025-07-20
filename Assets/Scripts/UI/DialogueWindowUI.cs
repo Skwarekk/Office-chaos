@@ -14,8 +14,17 @@ public class DialogueWindowUI: MonoBehaviour
     {
         DialogueManager.Instance.OnNewDialogueLine += Instance_OnNewDialogueLine;
         DialogueManager.Instance.OnDialogueEnded += Instance_OnDialogueEnded;
+        GameManager.Instance.OnStateChanged += GameManager_OnStateChanged;
 
         Hide();
+    }
+
+    private void GameManager_OnStateChanged(object sender, System.EventArgs e)
+    {
+        if (GameManager.Instance.IsGameOver())
+        {
+            Hide();
+        }
     }
 
     private void Instance_OnNewDialogueLine(object sender, DialogueManager.OnNewDialogueLineEventArgs e)

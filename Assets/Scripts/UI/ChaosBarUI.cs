@@ -8,7 +8,16 @@ public class ChaosBarUI : MonoBehaviour
     private void Start()
     {
         ChaosManager.Instance.OnChaosLevelChanged += Instance_OnChaosLevelChanged;
+        GameManager.Instance.OnStateChanged += GameManager_OnStateChanged;
         UpdateChaosBar();
+    }
+
+    private void GameManager_OnStateChanged(object sender, System.EventArgs e)
+    {
+        if (GameManager.Instance.IsGameOver())
+        {
+            Hide();
+        }
     }
 
     private void Instance_OnChaosLevelChanged(object sender, System.EventArgs e)
@@ -20,5 +29,10 @@ public class ChaosBarUI : MonoBehaviour
     {
         float chaosLevelNormalized = ChaosManager.Instance.GetChaosLevel() / 100f;
         chaosBar.fillAmount = chaosLevelNormalized;
+    }
+
+    private void Hide()
+    {
+        gameObject.SetActive(false);
     }
 }

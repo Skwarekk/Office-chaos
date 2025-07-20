@@ -25,6 +25,12 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.SkipDialogue.performed += SkipDialogue_performed;
     }
 
+    private void OnDestroy()
+    {
+        playerInputActions.Player.SkipDialogue.performed -= SkipDialogue_performed;
+        playerInputActions.Player.Disable();
+    }
+
     private void SkipDialogue_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         OnNextDialogue?.Invoke(this, EventArgs.Empty);
