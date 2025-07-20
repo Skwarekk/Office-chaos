@@ -6,6 +6,9 @@ public class FanVisual : MonoBehaviour
     [Header("Visuals")]
     [SerializeField] private Sprite normalSprite;
     [SerializeField] private Sprite inUseSprite;
+    [Header("Tornado")]
+    [SerializeField] private Transform tornadoPrefab;
+    [SerializeField] private Transform tornadoStarterPoint;
     private SpriteRenderer spriteRenderer;
 
     private void Awake()
@@ -30,6 +33,7 @@ public class FanVisual : MonoBehaviour
         }
         else if (fan.IsTornado())
         {
+            Instantiate(tornadoPrefab, tornadoStarterPoint);
             spriteRenderer.sprite = normalSprite;
         }
     }

@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 283084662447904345}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -278,6 +278,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7134838186780741567, guid: 4acf9553f3b41364fb999990e6ec6315, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 9137755639003811537, guid: 4acf9553f3b41364fb999990e6ec6315, type: 3}
       propertyPath: m_Size.x
       value: 1.2116776
@@ -293,6 +297,10 @@ PrefabInstance:
     - target: {fileID: 9137755639003811537, guid: 4acf9553f3b41364fb999990e6ec6315, type: 3}
       propertyPath: m_Offset.y
       value: -2.8191612
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137755639003811537, guid: 4acf9553f3b41364fb999990e6ec6315, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -335,14 +343,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2829b9fa2d6d7641ab52c0bc08c2000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaosAmount: 50
+  chaosAmount: 40
   firstPhaseLines:
-  - 1
+  - IT'S GROWN! I WONDER IF IT CAN STILL BE WATERED.
   secondPhaseLines:
-  - 2
+  - YEAH! IT GREW AGAIN! MAYBE YOU CAN WATER IT ONCE MORE?
   thirdPhaseLines:
-  - 3
+  - OF COURSE YOU CAN! TRY WATERING AGAIN!
   fourthPhaseLines:
-  - 4
-  finalPhaseLines: []
-  phaseTime: 2
+  - IT'S GROWN AGAIN!
+  finalPhaseLines:
+  - OH... TH.. THAT'S SUCH A BIG PLANT. ISN'T IT?
+  phaseTime: 1

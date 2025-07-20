@@ -26,6 +26,7 @@ public abstract class InteractableElement : MonoBehaviour
     public void ToggleCanInteract()
     {
         canInteract = !canInteract;
+        OnUnhover?.Invoke(this, EventArgs.Empty);
     }
 
     public void ToggleIsInUse()

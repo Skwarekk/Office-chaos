@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; }
 
     [SerializeField] private float speed = 7f;
+    [SerializeField] private LayerMask wallLayer;
 
     private void Awake()
     {
@@ -20,7 +21,7 @@ public class Player : MonoBehaviour
         float movementValue = GameInput.Instance.GetMovementValue();
         Vector3 movement = new Vector3(movementValue, 0, 0);
         float distance = 0.5f;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, movement, distance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, movement, distance, wallLayer);
         bool canMove = hit.collider == null;
 
         if (canMove)

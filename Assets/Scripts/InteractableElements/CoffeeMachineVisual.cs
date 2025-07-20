@@ -3,6 +3,8 @@ using UnityEngine;
 public class CoffeeMachineVisual : MonoBehaviour
 {
     [SerializeField] private CoffeeMachine coffeeMachine;
+    [SerializeField] private Transform coffeeOnTheFloorPrefab;
+    [SerializeField] private Transform coffeeOnTheFloorPoint;
     [Header("Visuals")]
     [SerializeField] private Sprite normalSprite;
     [SerializeField] private Sprite inUseSprite;
@@ -32,6 +34,7 @@ public class CoffeeMachineVisual : MonoBehaviour
         else if (coffeeMachine.IsBroken())
         {
             spriteRenderer.sprite = brokenSprite;
+            Instantiate(coffeeOnTheFloorPrefab, coffeeOnTheFloorPoint);
         }
     }
 }

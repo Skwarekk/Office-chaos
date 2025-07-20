@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5608127195447826337}
   - component: {fileID: 1580115775743994032}
   m_Layer: 0
-  m_Name: Lamp
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 84a23b73574578e4fb2f8a995605370e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9c64528df8e32114cbcfb5e3d81a4b7b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_FlipX: 0
   m_FlipY: 0
