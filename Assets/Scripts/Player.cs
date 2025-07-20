@@ -19,7 +19,14 @@ public class Player : MonoBehaviour
     {
         float movementValue = GameInput.Instance.GetMovementValue();
         Vector3 movement = new Vector3(movementValue, 0, 0);
-        transform.Translate(movement * speed * Time.deltaTime);
+        float distance = 0.5f;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, movement, distance);
+        bool canMove = hit.collider == null;
+
+        if (canMove)
+        {
+            transform.Translate(movement * speed * Time.deltaTime);
+        }
     }
 
     public bool IsWalking()

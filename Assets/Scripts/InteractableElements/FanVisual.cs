@@ -15,10 +15,10 @@ public class FanVisual : MonoBehaviour
 
     private void Start()
     {
-        fan.OnStateChanged += CoffeeMachine_OnStateChanged;
+        fan.OnStateChanged += Fan_OnStateChanged;
     }
 
-    private void CoffeeMachine_OnStateChanged(object sender, System.EventArgs e)
+    private void Fan_OnStateChanged(object sender, System.EventArgs e)
     {
         if (fan.IsNormal())
         {
