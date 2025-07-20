@@ -66,6 +66,9 @@ public class DialogueWindowUI: MonoBehaviour
                 {
                     dialogueText.text += currentLine[currentLineIndex];
                     currentLineIndex++;
+
+                    float volume = 0.5f;
+                    SoundManager.Instance.PlayDialogueSound(volume);
                 }
                 else
                 {

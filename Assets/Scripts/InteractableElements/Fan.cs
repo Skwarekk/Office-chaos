@@ -12,6 +12,8 @@ public class Fan : InteractableElement
         Used
     }
 
+    public static Fan Instance { get; private set; }
+
     [SerializeField] private string[] tornadoLines;
     [Space]
     [SerializeField] private float usingTime = 2f;
@@ -24,6 +26,15 @@ public class Fan : InteractableElement
         state = State.InUse;
         ToggleIsInUse();
         OnStateChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.LogWarning("There is more than one Instance of Fan!");
+        }
+        Instance = this;
     }
 
     private void Start()

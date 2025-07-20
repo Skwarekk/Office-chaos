@@ -20,6 +20,8 @@ public abstract class InteractableElement : MonoBehaviour
         if (canInteract)
         {
             Interact();
+            float volume = 0.5f;
+            SoundManager.Instance.PlayClickSound(volume);
         }
     }
 

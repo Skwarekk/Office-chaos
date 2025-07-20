@@ -4,6 +4,7 @@ using UnityEngine;
 public class Plant : InteractableElement
 {
     public event EventHandler OnStateChanged;
+    public event EventHandler OnInteract;
 
     private enum State
     {
@@ -14,6 +15,8 @@ public class Plant : InteractableElement
         FourthPhase,
         InUse
     }
+
+    public static Plant Instance { get; private set; }
 
     [SerializeField] private string[] firstPhaseLines;
     [SerializeField] private string[] secondPhaseLines;
@@ -29,6 +32,7 @@ public class Plant : InteractableElement
 
     public override void Interact()
     {
+        OnInteract?.Invoke(this, EventArgs.Empty);
         switch (state)
         {
             case State.Normal:
@@ -51,6 +55,15 @@ public class Plant : InteractableElement
         }
     }
 
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.LogWarning("There is more than one Instance of Plant!");
+        }
+        Instance = this;
+    }
+
     private void Start()
     {
         state = State.Normal;
@@ -58,17 +71,17 @@ public class Plant : InteractableElement
 
     private void Update()
     {
-        if(state == State.InUse)
+        if (state == State.InUse)
         {
             phaseTimer += Time.deltaTime;
 
-            if(phaseTimer > phaseTime)
+            if (phaseTimer > phaseTime)
             {
                 phaseTimer = 0f;
                 state = targetState;
                 OnStateChanged?.Invoke(this, EventArgs.Empty);
                 ShowCorrectDialogue();
-                if(state == State.FourthPhase)
+                if (state == State.FourthPhase)
                 {
                     ChaosManager.Instance.IncreaseChaosLevel(GetChaosAmount());
                 }
