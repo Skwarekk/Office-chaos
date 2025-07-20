@@ -60,7 +60,7 @@ public class DialogueManager: MonoBehaviour
 
     private void NextDialogue()
     {
-        GameInput.Instance.DisableMovement();
+        GameManager.Instance.StartDialogue();
         isDialogueActive = true;
         if (dialogueLines.Count > 0)
         {
@@ -70,7 +70,7 @@ public class DialogueManager: MonoBehaviour
         else
         {
             OnDialogueEnded?.Invoke(this, EventArgs.Empty);
-            GameInput.Instance.EnableMovement();
+            GameManager.Instance.EndDialogue();
             dialogueLines.Clear();
             isDialogueActive = false;
         }
